@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { API_URL } from '../app.constants';
+//import { API_URL } from '../app.constants';
+import { environment } from '../../environments/environment';
 
 export const AUTHTOKEN = 'authToken'
 export const AUTHENTICATED_USER = 'authenticatedUser'
@@ -19,7 +20,7 @@ export class JWTAuthService implements CanActivate {
     // console.log("Hello World Bean Called")
 
     return this.httpService.post<any>(
-      `${API_URL}/authenticate`,
+      `${environment.backend.API_URL}/authenticate`,
       {username, password}).pipe(
         map(
           data => {

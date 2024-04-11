@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backend: {
+    API_URL: 'http://'+window.location.hostname+':8080/todo-services',
+    DB_API_URL: 'http://'+window.location.hostname+':8080/todo-services/db'
+  }
 };
 
 /*

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL } from 'src/app/app.constants';
+//import { API_URL } from 'src/app/app.constants';
+import { environment } from '../../../environments/environment';
+
 
 export class HelloServiceResponse {
 
@@ -29,7 +31,7 @@ export class WelcomeService {
 
   executeHelloWorldBeanService() {
     // console.log("Hello World Bean Called")
-    return this.helloService.get<HelloServiceResponse>('${API_URL}/hello-world-bean/Achin');
+    return this.helloService.get<HelloServiceResponse>(`${environment.backend.API_URL}/hello-world-bean/Achin`);
   }
 
   executeHelloWorldBeanServiceWithPath(name: String) {
@@ -44,7 +46,7 @@ export class WelcomeService {
     //   );
 
     return this.helloService.get<HelloServiceResponse>(
-      `${API_URL}/hello-world-bean/${name}`);
+      `${environment.backend.API_URL}/hello-world-bean/${name}`);
 
   }
 }

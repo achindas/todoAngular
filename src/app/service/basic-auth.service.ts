@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { API_URL } from '../app.constants';
+//import { API_URL } from '../app.constants';
+import { environment } from '../../environments/environment';
 
 export const AUTHTOKEN = 'authToken'
 export const AUTHENTICATED_USER = 'authenticatedUser'
@@ -33,7 +34,8 @@ export class BasicAuthService implements CanActivate {
       Authorization: header});
 
     return this.httpService.get<BasicAuthBean>(
-      `${API_URL}/basicauth/${username}`,
+      //`${API_URL}/basicauth/${username}`,
+      `${environment.backend.API_URL}/basicauth/${username}`,
       {headers: authHeader}).pipe(
         map(
           data => {
